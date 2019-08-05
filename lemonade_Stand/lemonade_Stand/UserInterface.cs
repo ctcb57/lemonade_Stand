@@ -27,5 +27,18 @@ namespace lemonade_Stand
             Console.ReadLine();
             Console.Clear();
         }
+
+        public static void DisplayPriceOptions()
+        {
+            Console.WriteLine("Welcome to the Store!");
+            Console.WriteLine("  ");
+            Console.WriteLine("Here is the list of items and their prices:");
+            Console.WriteLine("Cups: $0.05 per cup");
+            Console.WriteLine("Lemons: $0.40 per lemon");
+            Console.WriteLine("Sugar: $0.25 per cup of sugar");
+            Console.WriteLine("Ice: $0.01 per ice cube");
+            Console.WriteLine("   ");
+            Console.WriteLine("Please indicate how much of each item you would like to purchase");
+        }
     }
 }

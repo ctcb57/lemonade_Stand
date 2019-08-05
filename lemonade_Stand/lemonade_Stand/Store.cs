@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 
 namespace lemonade_Stand
 {
-    class Sugar : Inventory
+    class Store
     {
         //member variables
 
         //constructor
-        public Sugar(double price)
-        {
-            price = .25;
-        }
+
         //member methods
     }
 }

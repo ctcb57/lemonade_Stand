@@ -11,10 +11,6 @@ namespace lemonade_Stand
         //member variables
         public int priceOfLemonade;
         public int lemonadeRecipe;
-        public int cupsOnHand;
-        public int sugarOnHand;
-        public int lemonsOnHand;
-        public int iceOnHand;
         public double dailyProfit;
         public double weeklyProfit;
         public Inventory
