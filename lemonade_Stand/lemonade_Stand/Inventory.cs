@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace lemonade_Stand
 {
-    class Inventory
+    public abstract class Inventory
     {
         //member variables
+        public double price;
 
         //constructor
 
         //member methods
+
     }
 }

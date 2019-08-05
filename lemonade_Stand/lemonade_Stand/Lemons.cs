@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace lemonade_Stand
 {
-    class Weather
+    class Lemons : Inventory
     {
         //member variables
-        public int temperature;
-        public bool precipitation;
 
         //constructor
-
+        public Lemons(double price)
+        {
+            price = .40;
+        }
         //member methods
+
     }
 }

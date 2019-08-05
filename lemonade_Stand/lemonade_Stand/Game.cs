@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lemonade_Stand
 {
-    class Game
+    public class Game
     {
         //Things to do for the game
         // - Create the rules for the game and a display rules method in the UI
@@ -19,14 +19,24 @@ namespace lemonade_Stand
         // - Create the game play
 
         //member variables
-
+        private Player player1;
+        public int numberOfDaysThreshold;
         //constructor
+        public Game()
+        {
+            numberOfDaysThreshold = 7;
+        }
 
         //member methods
-
+        public void SetUpGame()
+        {
+            player1 = new Player();
+            player1.ChooseName();
+        }
         public void RunGame()
         {
             UserInterface.DisplayRules();
+            SetUpGame();
         }
 
     }
