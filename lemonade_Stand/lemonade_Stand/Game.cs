@@ -23,6 +23,7 @@ namespace lemonade_Stand
         public Weather weather;
         public Day day;
         public Stand player1Stand;
+        public Customer player1Customer;
         //constructor
         public Game()
         {
@@ -54,6 +55,8 @@ namespace lemonade_Stand
             player1Inventory.DisplayItemCount();
             Console.Clear();
         }
+
+
         
         public void RunGame()
         {
@@ -65,6 +68,7 @@ namespace lemonade_Stand
             PurchaseItems();
             UserInterface.DisplayRecipeIntro();
             player1Stand.CreateRecipe();
+            player1Stand.SetLemondadePrice();
         }
 
     }

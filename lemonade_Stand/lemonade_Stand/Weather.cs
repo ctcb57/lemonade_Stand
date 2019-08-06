@@ -21,7 +21,7 @@ namespace lemonade_Stand
         public int GenerateTemperature()
         {
             Random random = new Random();
-            int temperature = random.Next(50, 101);
+            temperature = random.Next(50, 101);
             Console.WriteLine("Projected temperatue is: " + temperature + " degrees");
             Console.ReadLine();
             return temperature;
