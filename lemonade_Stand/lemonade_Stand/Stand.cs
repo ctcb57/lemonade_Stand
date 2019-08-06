@@ -6,21 +6,35 @@ using System.Threading.Tasks;
 
 namespace lemonade_Stand
 {
-   class Stand
+   public class Stand
     {
         //member variables
         public int priceOfLemonade;
-        public int lemonadeRecipe;
-        public int dailyProfit;
-        public int weeklyProfit;
-
+        public int lemonsPerPitcher;
+        public int sugarPerPitcher;
+        public int icePerPitcher;
 
         //constructor
         public Stand()
         {
-            dailyProfit = 0;
-            weeklyProfit = 0;
         }
         //member methods
+        public void CreateRecipe()
+        {
+            Console.WriteLine("How many lemons would you like to use per pitcher?");
+            lemonsPerPitcher = int.Parse(Console.ReadLine());
+            Console.WriteLine("How many cups of sugar would you like to use per pitcher?");
+            sugarPerPitcher = int.Parse(Console.ReadLine());
+            Console.WriteLine("How many ice packs would you like to use per pitcher?");
+            icePerPitcher = int.Parse(Console.ReadLine());
+            Console.Clear();
+        }
+
+        public int SetLemondadePrice()
+        {
+            Console.WriteLine("How much would you like to charge per cup of lemonade?");
+            priceOfLemonade = int.Parse(Console.ReadLine());
+            return priceOfLemonade;
+        }
     }
 }

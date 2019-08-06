@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lemonade_Stand
 {
-    class Inventory
+    public class Inventory
     {
         //this should track all of the counts for each of the given items the player has at any time
         //member variables
@@ -22,7 +22,15 @@ namespace lemonade_Stand
 
         }
         //member variables
-
+        public void DisplayItemCount()
+        {
+            Console.WriteLine("You currently have " + lemonCount + " lemons.");
+            Console.WriteLine("You currently have " + sugarCount + " cups of sugar.");
+            Console.WriteLine("You currently have " + cupCount + " cups.");
+            Console.WriteLine("You currently have " + iceCount + " packs of ice");
+            Console.ReadLine();
+            //remove this at the time of turning in the project or putting everything together
+        }
 
     }
 }

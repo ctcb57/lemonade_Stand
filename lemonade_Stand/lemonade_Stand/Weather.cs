@@ -6,28 +6,31 @@ using System.Threading.Tasks;
 
 namespace lemonade_Stand
 {
-    class Weather
+    public class Weather
     {
         //member variables
         public int temperature;
         public bool precipitation;
-        Random random;
         //constructor
         public Weather()
         {
-            random = new Random();
+            temperature = 0;
+            precipitation = false;
         }
         //member methods
-        public void GenerateTemperature()
+        public int GenerateTemperature()
         {
+            Random random = new Random();
             int temperature = random.Next(50, 101);
             Console.WriteLine("Projected temperatue is: " + temperature + " degrees");
             Console.ReadLine();
+            return temperature;
             //remove the readline at production time
         }
 
         public bool DeterminePrecipitation()
         {
+            Random random = new Random();
             int number = random.Next(0, 2);
             if(number == 0)
             {

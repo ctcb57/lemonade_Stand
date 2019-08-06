@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace lemonade_Stand
 {
-    class Store
+    public class Store
     {
         //member variables
-        public int lemon;
-        public int ice;
-        public int cup;
-        public int sugar;
        
 
         //constructor
@@ -24,26 +20,34 @@ namespace lemonade_Stand
         //member methods
         public void SellLemons(Player player, Inventory inventory)
         {
-            player.cashOnHand -= 3;
-            inventory.lemonCount += 1;
+            Console.WriteLine("How many lemons would you like to purchase?");
+            int lemonsPurchased = int.Parse(Console.ReadLine());
+            player.cashOnHand -= (3 * lemonsPurchased);
+            inventory.lemonCount += (1 * lemonsPurchased);
         }
 
         public void SellIce(Player player, Inventory inventory)
         {
-            player.cashOnHand -= 1;
-            inventory.iceCount += 1;
+            Console.WriteLine("How much ice would you like to purchase?");
+            int icePurchased = int.Parse(Console.ReadLine());
+            player.cashOnHand -= (1 * icePurchased);
+            inventory.iceCount += (1 * icePurchased);
         }
 
         public void SellSugar(Player player, Inventory inventory)
         {
-            player.cashOnHand -= 2;
-            inventory.sugarCount += 1;
+            Console.WriteLine("How many sugar packs would you like to purchase?");
+            int sugarPurchased = int.Parse(Console.ReadLine());
+            player.cashOnHand -= (2 * sugarPurchased);
+            inventory.sugarCount += (1 * sugarPurchased);
         }
 
         public void SellCup(Player player, Inventory inventory)
         {
-            player.cashOnHand -= 1;
-            inventory.cupCount += 1;
+            Console.WriteLine("How many cups would you like to purchase?");
+            int cupsPurchased = int.Parse(Console.ReadLine());
+            player.cashOnHand -= (1 * cupsPurchased);
+            inventory.cupCount += (1 * cupsPurchased);
         }
 
     }

@@ -26,12 +26,13 @@ namespace lemonade_Stand
             return name;
         }
 
-
-
-
-
-        
-
+        public int DisplayCashOnHand()
+        {
+            Console.WriteLine(name + "'s current cash on hand is: " + cashOnHand);
+            Console.ReadLine();
+            //delete readline at time of game
+            return cashOnHand;
+        }
 
     }
 }
