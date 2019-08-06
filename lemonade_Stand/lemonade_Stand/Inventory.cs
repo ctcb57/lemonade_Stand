@@ -8,23 +8,21 @@ namespace lemonade_Stand
 {
     class Inventory
     {
+        //this should track all of the counts for each of the given items the player has at any time
         //member variables
-        public string item;
-        public int itemCounter;
+
+        public int lemonCount;
+        public int sugarCount;
+        public int cupCount;
+        public int iceCount;
 
         //constructor
-        public Inventory(string item, int itemCounter)
+        public Inventory()
         {
-            Inventory lemon = new Inventory("lemon", 0);
-            Inventory cup = new Inventory("cup", 0);
-            Inventory sugar = new Inventory("sugar", 0);
-            Inventory ice = new Inventory("ice", 0);
-        }
-        //member 
-        //public int increaseInventoryCount()
-        //{
 
-        //}
+        }
+        //member variables
+
 
     }
 }

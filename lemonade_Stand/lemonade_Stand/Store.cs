@@ -9,18 +9,42 @@ namespace lemonade_Stand
     class Store
     {
         //member variables
-        public string item;
-        public double price;
+        public int lemon;
+        public int ice;
+        public int cup;
+        public int sugar;
+       
 
         //constructor
-        public Store(string item, double price)
+        public Store()
         {
-            Store lemon = new Store("lemon", 0.4);
-            Store cup = new Store("cup", 0.05);
-            Store sugar = new Store("sugar", 0.25);
-            Store ice = new Store("ice", 0.01);
+
         }
 
         //member methods
+        public void SellLemons(Player player, Inventory inventory)
+        {
+            player.cashOnHand -= 3;
+            inventory.lemonCount += 1;
+        }
+
+        public void SellIce(Player player, Inventory inventory)
+        {
+            player.cashOnHand -= 1;
+            inventory.iceCount += 1;
+        }
+
+        public void SellSugar(Player player, Inventory inventory)
+        {
+            player.cashOnHand -= 2;
+            inventory.sugarCount += 1;
+        }
+
+        public void SellCup(Player player, Inventory inventory)
+        {
+            player.cashOnHand -= 1;
+            inventory.cupCount += 1;
+        }
+
     }
 }

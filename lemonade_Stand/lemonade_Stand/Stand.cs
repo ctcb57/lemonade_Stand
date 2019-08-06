@@ -11,25 +11,16 @@ namespace lemonade_Stand
         //member variables
         public int priceOfLemonade;
         public int lemonadeRecipe;
-        public double dailyProfit;
-        public double weeklyProfit;
+        public int dailyProfit;
+        public int weeklyProfit;
 
 
         //constructor
         public Stand()
         {
-            dailyProfit = 0.00;
-            weeklyProfit = 0.00;
+            dailyProfit = 0;
+            weeklyProfit = 0;
         }
         //member methods
-        //public int calcDailyProfit()
-        //{
-
-        //}
-
-        //public int calcWeeklyProfit()
-        //{
-
-        //}
     }
 }

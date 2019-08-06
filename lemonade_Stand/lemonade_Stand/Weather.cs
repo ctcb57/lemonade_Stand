@@ -18,13 +18,12 @@ namespace lemonade_Stand
             random = new Random();
         }
         //member methods
-        public int GenerateTemperature()
+        public void GenerateTemperature()
         {
             int temperature = random.Next(50, 101);
             Console.WriteLine("Projected temperatue is: " + temperature + " degrees");
             Console.ReadLine();
             //remove the readline at production time
-            return temperature;
         }
 
         public bool DeterminePrecipitation()

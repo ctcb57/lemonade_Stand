@@ -10,6 +10,7 @@ namespace lemonade_Stand
     {
         //member variables
         public List<string> dayOfTheWeek;
+        Weather weather;
         //constructor
         public Day()
         {
@@ -20,6 +21,7 @@ namespace lemonade_Stand
             dayOfTheWeek.Add("Friday");
             dayOfTheWeek.Add("Saturday");
             dayOfTheWeek.Add("Sunday");
+            weather = new Weather();
         }
         //member methods
 

@@ -10,12 +10,12 @@ namespace lemonade_Stand
     {
         //member variables
         public string name;
-        public double cashOnHand;
+        public int cashOnHand;
 
         //constructor
         public Player()
         {
-            cashOnHand = 20.00;
+            cashOnHand = 100;
         }
         //member methods
         public string ChooseName()
@@ -26,25 +26,9 @@ namespace lemonade_Stand
             return name;
         }
 
-        public void DisplayCashOnHand()
-        {
-            Console.WriteLine("Current Cash On Hand is: " + cashOnHand);
-            Console.ReadLine();
-            //Remove this readline whenever you're done with the program
-        }
 
-        public double PurchaseLemons()
-        {
-            Console.WriteLine("How many lemons would you like to purchase?");
-            double lemonsPurchased = double.Parse(Console.ReadLine());
-            double purhcaseAmount = lemonsPurchased * .40;
-            double currentCashOnHand = cashOnHand;
-            cashOnHand = currentCashOnHand - purhcaseAmount;
-            Console.WriteLine("Current cash on hand is: " + cashOnHand);
-            Console.ReadLine();
-            //remove this readline when you're done
-            return cashOnHand;
-        }
+
+
 
         
 
