@@ -14,8 +14,7 @@ namespace lemonade_Stand
         //constructor
         public Weather()
         {
-            temperature = 0;
-            precipitation = false;
+
         }
         //member methods
         public int GenerateTemperature()

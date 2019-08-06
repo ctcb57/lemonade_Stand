@@ -44,15 +44,16 @@ namespace lemonade_Stand
         public void DetermineIfCustomerBuys(Customer customer, Weather weather, Player player)
         {
             customer.GenerateCustomerPreferences();
-            if(customer.precipitationPreference == weather.precipitation && priceOfLemonade < customer.pricePreference && weather.temperature > customer.temperaturePreference)
+            if (customer.precipitationPreference == weather.precipitation && priceOfLemonade < customer.pricePreference && weather.temperature > customer.temperaturePreference)
             {
                 player.cashOnHand += priceOfLemonade;
                 Console.WriteLine("Customer " + customer.idNumber + " purchased lemonade");
+                Console.WriteLine("You now have " + player.cashOnHand + " dollars of cash on hand");
                 Console.ReadLine();
             }
             else
             {
-                Console.WriteLine("Customer " + customer.idNumber + "didn't purchase lemonade");
+                Console.WriteLine("Customer " + customer.idNumber + " didn't purchase lemonade");
                 Console.ReadLine();
             }
         }

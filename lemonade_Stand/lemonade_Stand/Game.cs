@@ -40,6 +40,7 @@ namespace lemonade_Stand
             weather = new Weather();
             day = new Day();
             player1Stand = new Stand();
+            player1Customer = new Customer();
         }
 
         public void PurchaseItems()
@@ -63,12 +64,18 @@ namespace lemonade_Stand
             UserInterface.DisplayRules();
             SetUpGame();
             UserInterface.DisplayWeatherIntroduction();
-            day.DisplayDailyWeather();
+            weather.DeterminePrecipitation();
+            weather.GenerateTemperature();
             UserInterface.DisplayPriceOptions();
             PurchaseItems();
             UserInterface.DisplayRecipeIntro();
             player1Stand.CreateRecipe();
             player1Stand.SetLemondadePrice();
+
+            for (int i = 0; i < 10; i++)
+            {
+                player1Stand.DetermineIfCustomerBuys(player1Customer, weather, player1);
+            }
         }
 
     }
