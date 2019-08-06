@@ -59,5 +59,13 @@ namespace lemonade_Stand
             Console.ReadLine();
             //remove this readline at production time
         }
+
+        public static void DisplayEndOfDaySummary()
+        {
+            Console.WriteLine("That makes the end of the day!");
+            Console.WriteLine("This is what your player's inventory currently sits at");
+            Console.WriteLine("  ");
+            Console.ReadLine();
+        }
     }
 }

@@ -11,10 +11,12 @@ namespace lemonade_Stand
         //member variables
         public string name;
         public int cashOnHand;
+        public int startingCash;
 
         //constructor
         public Player()
         {
+            startingCash = 100;
             cashOnHand = 100;
         }
         //member methods

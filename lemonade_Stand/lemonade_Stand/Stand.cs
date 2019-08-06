@@ -21,6 +21,7 @@ namespace lemonade_Stand
         //constructor
         public Stand()
         {
+
         }
         //member methods
         public void CreateRecipe()
@@ -41,12 +42,22 @@ namespace lemonade_Stand
             return priceOfLemonade;
         }
 
-        public void DetermineIfCustomerBuys(Customer customer, Weather weather, Player player)
+        public void PourLemonadePitcher(Inventory inventory)
+        {
+            inventory.lemonCount -= lemonsPerPitcher;
+            inventory.iceCount -= icePerPitcher;
+            inventory.sugarCount -= sugarPerPitcher;
+            cupsOfLemonadeLeftInPitcher = 10;
+        }
+
+        public void DetermineIfCustomerBuys(Customer customer, Weather weather, Player player, Inventory inventory)
         {
             customer.GenerateCustomerPreferences();
-            if (customer.precipitationPreference == weather.precipitation && priceOfLemonade < customer.pricePreference && weather.temperature > customer.temperaturePreference)
+            if (priceOfLemonade < customer.pricePreference && weather.temperature > customer.temperaturePreference)
             {
                 player.cashOnHand += priceOfLemonade;
+                cupsOfLemonadeLeftInPitcher -= 1;
+                inventory.cupCount -= 1;
                 Console.WriteLine("Customer " + customer.idNumber + " purchased lemonade");
                 Console.WriteLine("You now have " + player.cashOnHand + " dollars of cash on hand");
                 Console.ReadLine();

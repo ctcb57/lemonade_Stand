@@ -10,6 +10,8 @@ namespace lemonade_Stand
     {
         //member variables
         Weather weather;
+        public int dailyProfit;
+
         //constructor
         public Day()
         {
@@ -21,6 +23,14 @@ namespace lemonade_Stand
             weather.GenerateTemperature();
             weather.DeterminePrecipitation();
             Console.Clear();
+        }
+
+        public int CalcDailyProfit(Player player)
+        {
+            dailyProfit = player.cashOnHand - player.startingCash;
+            Console.WriteLine(player.name + " earned " + dailyProfit + " in profit today.");
+            Console.ReadLine();
+            return dailyProfit;
         }
 
 

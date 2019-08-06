@@ -11,6 +11,8 @@ namespace lemonade_Stand
         //Things to do for the game
         //Generate the method for determining the profit within the game
         //the daily profit would be within the day class
+        //need to input some set and get logic for the game to prevent the player from going into the negative
+
 
         //member variables
         public Player player1;
@@ -57,7 +59,12 @@ namespace lemonade_Stand
             Console.Clear();
         }
 
-
+        public void CalcWeeklyProfit()
+        {
+            weeklyProfit = player1.cashOnHand - player1.startingCash;
+            Console.WriteLine(player1.name + " has earned " + weeklyProfit + " this week.");
+            Console.ReadLine();
+        }
         
         public void RunGame()
         {
@@ -66,16 +73,23 @@ namespace lemonade_Stand
             UserInterface.DisplayWeatherIntroduction();
             weather.DeterminePrecipitation();
             weather.GenerateTemperature();
+            Console.Clear();
             UserInterface.DisplayPriceOptions();
             PurchaseItems();
             UserInterface.DisplayRecipeIntro();
             player1Stand.CreateRecipe();
             player1Stand.SetLemondadePrice();
-
-            for (int i = 0; i < 10; i++)
+            player1Stand.PourLemonadePitcher(player1Inventory);
+            for (int i = 0; i < 20; i++)
             {
-                player1Stand.DetermineIfCustomerBuys(player1Customer, weather, player1);
+                player1Stand.DetermineIfCustomerBuys(player1Customer, weather, player1, player1Inventory);
             }
+            Console.ReadLine();
+            Console.Clear();
+            UserInterface.DisplayEndOfDaySummary();
+            player1Inventory.DisplayItemCount();
+            day.CalcDailyProfit(player1);
+            CalcWeeklyProfit();
         }
 
     }
