@@ -9,17 +9,14 @@ namespace lemonade_Stand
     public class Game
     {
         //Things to do for the game
-        // - Create the rules for the game and a display rules method in the UI
-        // - Create user name entry method
-        // - Create all classes along with parent and child relationships
-        // - Create member variables for all classes
-        // - Create initial member methods for appropriate classes
-        // - Create UML with child classes
-        // - Start to build the initial values of all member variables
-        // - Create the game play
+        //Need to create the possiblity for the player to purchase items and increase their inventory
+        //Need to have this result in their money also decreasing
+        //It should also show that the inventory has increased within the stand so there is an interactive element
+        //Need to work on ensuring this is part of the interface which shows the temperature
+        //It also needs to show all relevant purchasing information
 
         //member variables
-        private Player player1;
+        public Player player1;
         public int numberOfDaysThreshold;
         //constructor
         public Game()
@@ -34,11 +31,19 @@ namespace lemonade_Stand
             player1.ChooseName();
         }
 
+        public void PurchaseItems()
+        {
+            double lemonsPurchased = player1.PurchaseLemons();
+
+        }
+
         
         public void RunGame()
         {
             UserInterface.DisplayRules();
             SetUpGame();
+            player1.DisplayCashOnHand();
+            UserInterface.DisplayPriceOptions();
         }
 
     }

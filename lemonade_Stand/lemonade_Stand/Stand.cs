@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace lemonade_Stand
 {
-    class Stand
+   class Stand
     {
         //member variables
         public int priceOfLemonade;
         public int lemonadeRecipe;
         public double dailyProfit;
         public double weeklyProfit;
-        public Inventory
+
 
         //constructor
         public Stand()
@@ -22,14 +22,14 @@ namespace lemonade_Stand
             weeklyProfit = 0.00;
         }
         //member methods
-        public int calcDailyProfit()
-        {
+        //public int calcDailyProfit()
+        //{
 
-        }
+        //}
 
-        public int calcWeeklyProfit()
-        {
+        //public int calcWeeklyProfit()
+        //{
 
-        }
+        //}
     }
 }

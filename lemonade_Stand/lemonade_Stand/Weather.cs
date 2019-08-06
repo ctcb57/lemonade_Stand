@@ -13,11 +13,17 @@ namespace lemonade_Stand
         public bool precipitation;
         Random random;
         //constructor
-
+        public Weather()
+        {
+            random = new Random();
+        }
         //member methods
         public int GenerateTemperature()
         {
             int temperature = random.Next(50, 101);
+            Console.WriteLine("Projected temperatue is: " + temperature + " degrees");
+            Console.ReadLine();
+            //remove the readline at production time
             return temperature;
         }
 
@@ -27,11 +33,17 @@ namespace lemonade_Stand
             if(number == 0)
             {
                 precipitation = true;
+                Console.WriteLine("There is rain in the forecast for today");
+                Console.ReadLine();
+                //remove the readline at production time
                 return precipitation;
             }
             else
             {
                 precipitation = false;
+                Console.WriteLine("There is no rain in the forecast for today");
+                Console.ReadLine();
+                //remove the readline at production time
                 return precipitation;
             }
         }

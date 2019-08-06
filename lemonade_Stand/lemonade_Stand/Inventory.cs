@@ -10,18 +10,21 @@ namespace lemonade_Stand
     {
         //member variables
         public string item;
-        public double price;
         public int itemCounter;
 
         //constructor
-        public Inventory(string item, double price, int itemCounter)
+        public Inventory(string item, int itemCounter)
         {
-            Inventory lemon = new Inventory("lemon", 0.4, 0);
-            Inventory cup = new Inventory("cup", 0.05, 0);
-            Inventory sugar = new Inventory("sugar", 0.25, 0);
-            Inventory ice = new Inventory("ice", 0.01, 0);
+            Inventory lemon = new Inventory("lemon", 0);
+            Inventory cup = new Inventory("cup", 0);
+            Inventory sugar = new Inventory("sugar", 0);
+            Inventory ice = new Inventory("ice", 0);
         }
-        //member methods
+        //member 
+        //public int increaseInventoryCount()
+        //{
+
+        //}
 
     }
 }

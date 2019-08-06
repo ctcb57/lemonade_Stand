@@ -39,6 +39,8 @@ namespace lemonade_Stand
             Console.WriteLine("Ice: $0.01 per ice cube");
             Console.WriteLine("   ");
             Console.WriteLine("Please indicate how much of each item you would like to purchase");
+            Console.ReadLine();
+            //remove this read line at production time
         }
     }
 }

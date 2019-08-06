@@ -15,9 +15,9 @@ namespace lemonade_Stand
         public double pricePreference;
 
         //constructor
-        public Customer(int temperaturePreference, bool precipitationPreference, double pricePreference)
+        public Customer(string idNumber, int temperaturePreference, bool precipitationPreference, double pricePreference)
         {
-            Customer first = new Customer(70, true, 0.20);
+            Customer first = new Customer("001", 70, true, 0.20);
         }
         //member methods
     }
