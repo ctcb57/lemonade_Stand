@@ -8,13 +8,6 @@ namespace lemonade_Stand
 {
     public class Customer
     {
-        //strategy for the customers
-        //create a list of 10 customers
-        //have the list go through a foreach loop when they are interacting with the price set, the temp, and rain
-        //ensure it is verifying if the customer is buying the lemonade or not
-        //when they buy the lemonade, ensure it is increasing the cashOnHand for the player
-        //also ensure it shows the profit margin for the player within the game class
-        //ultimately it will show the daily profit and then it will show the weekly profit
         //member variables
         public int idNumber;
         public int temperaturePreference;
@@ -31,7 +24,7 @@ namespace lemonade_Stand
             Random random = new Random();
             idNumber = random.Next(100);
             temperaturePreference = random.Next(50, 83);
-            pricePreference = random.Next(0, 3);
+            pricePreference = random.Next(0, 9);
         }
     }
 }

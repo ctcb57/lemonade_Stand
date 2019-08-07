@@ -8,9 +8,7 @@ namespace lemonade_Stand
 {
    public class Stand
     {
-        //Need to generate a variable that holds the number of cups that are left within the pitcher
-        //Need to create a method that recreates the pitcher and decreases inventory
-        //Need to ensure that each time a cup is purchased, it decreases the number of cups left in the pitcher
+        
         //member variables
         public int priceOfLemonade;
         public int lemonsPerPitcher;
@@ -44,10 +42,19 @@ namespace lemonade_Stand
 
         public void PourLemonadePitcher(Inventory inventory)
         {
-            inventory.lemonCount -= lemonsPerPitcher;
-            inventory.iceCount -= icePerPitcher;
-            inventory.sugarCount -= sugarPerPitcher;
-            cupsOfLemonadeLeftInPitcher = 10;
+            if (inventory.lemonCount > 0 && inventory.iceCount > 0 && inventory.sugarCount > 0 && inventory.cupCount > 9)
+            {
+                inventory.lemonCount -= lemonsPerPitcher;
+                inventory.iceCount -= icePerPitcher;
+                inventory.sugarCount -= sugarPerPitcher;
+                cupsOfLemonadeLeftInPitcher = 10;
+            }
+            else
+            {
+                Console.WriteLine("You do not have enough inventory to pour another pitcher of lemonade");
+                Console.WriteLine("You will not be able to sell to another customer today.");
+                Console.ReadLine();
+            }
         }
 
         public void DetermineIfCustomerBuys(Customer customer, Weather weather, Player player, Inventory inventory, Day day)
@@ -61,6 +68,8 @@ namespace lemonade_Stand
                 day.dailySales += priceOfLemonade;
                 Console.WriteLine("Customer " + customer.idNumber + " purchased lemonade");
                 Console.WriteLine("You now have " + player.cashOnHand + " dollars of cash on hand");
+                Console.WriteLine("There are " + cupsOfLemonadeLeftInPitcher + " cups of lemonade left in the pitcher");
+                //remove the above line when you are ready for production since it is only checking that the method is working
                 Console.ReadLine();
             }
             else

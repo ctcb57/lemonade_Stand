@@ -8,7 +8,6 @@ namespace lemonade_Stand
 {
     public class Inventory
     {
-        //this should track all of the counts for each of the given items the player has at any time
         //member variables
 
         public int lemonCount;
