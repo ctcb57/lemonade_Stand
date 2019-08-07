@@ -50,14 +50,15 @@ namespace lemonade_Stand
             cupsOfLemonadeLeftInPitcher = 10;
         }
 
-        public void DetermineIfCustomerBuys(Customer customer, Weather weather, Player player, Inventory inventory)
+        public void DetermineIfCustomerBuys(Customer customer, Weather weather, Player player, Inventory inventory, Day day)
         {
             customer.GenerateCustomerPreferences();
-            if (priceOfLemonade < customer.pricePreference && weather.temperature > customer.temperaturePreference)
+            if (priceOfLemonade < customer.pricePreference && weather.actualTemperature > customer.temperaturePreference)
             {
                 player.cashOnHand += priceOfLemonade;
                 cupsOfLemonadeLeftInPitcher -= 1;
                 inventory.cupCount -= 1;
+                day.dailySales += priceOfLemonade;
                 Console.WriteLine("Customer " + customer.idNumber + " purchased lemonade");
                 Console.WriteLine("You now have " + player.cashOnHand + " dollars of cash on hand");
                 Console.ReadLine();

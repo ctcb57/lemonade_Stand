@@ -45,8 +45,8 @@ namespace lemonade_Stand
 
         public static void DisplayWeatherIntroduction()
         {
-            Console.WriteLine("Here is the weather you will encounter today");
-            Console.WriteLine("Remember, the weather will influence demand of your product");
+            Console.WriteLine("Weather will influence demand of your product.  Higher temperatures result in higher demand.");
+            Console.WriteLine("Here is the forecasted weather for today:");
             Console.ReadLine();
             //remove this readline at production time
         }
@@ -58,6 +58,22 @@ namespace lemonade_Stand
             Console.WriteLine("Each pitcher will generate 10 cups of lemonade");
             Console.ReadLine();
             //remove this readline at production time
+        }
+
+        public static void DisplayActualWeather()
+        {
+            Console.WriteLine("The forecasted weather has changed slightly");
+            Console.WriteLine("The actual weather for today will be:");
+            Console.ReadLine();
+        }
+
+        public static void StartSalesProcess()
+        {
+            Console.Clear();
+            Console.WriteLine("Your customers are starting to visit the stand");
+            Console.WriteLine("The customers decisions will be listed below");
+            Console.WriteLine("  ");
+            Console.ReadLine();
         }
 
         public static void DisplayEndOfDaySummary()

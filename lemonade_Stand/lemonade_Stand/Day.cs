@@ -11,26 +11,27 @@ namespace lemonade_Stand
         //member variables
         Weather weather;
         public int dailyProfit;
+        public int dailySales;
 
         //constructor
         public Day()
         {
             weather = new Weather();
+            dailySales = 0;
         }
         //member methods
         public void DisplayDailyWeather()
         {
-            weather.GenerateTemperature();
-            weather.DeterminePrecipitation();
+            weather.ForecastTemperature();
+            weather.ForecastPrecipitation();
             Console.Clear();
         }
 
-        public int CalcDailyProfit(Player player)
+        public void ShowDailySales(Player player)
         {
-            dailyProfit = player.cashOnHand - player.startingCash;
-            Console.WriteLine(player.name + " earned " + dailyProfit + " in profit today.");
+            Console.WriteLine(player.name + " earned $" + dailySales + " in sales today.");
             Console.ReadLine();
-            return dailyProfit;
+            dailySales = 0;
         }
 
 

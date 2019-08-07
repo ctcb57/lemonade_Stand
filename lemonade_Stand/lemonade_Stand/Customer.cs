@@ -30,9 +30,8 @@ namespace lemonade_Stand
         {
             Random random = new Random();
             idNumber = random.Next(100);
-            temperaturePreference = random.Next(50, 86);
+            temperaturePreference = random.Next(50, 83);
             pricePreference = random.Next(0, 3);
-            int number = random.Next(0, 2);
         }
     }
 }

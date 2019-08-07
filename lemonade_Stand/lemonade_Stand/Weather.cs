@@ -9,43 +9,76 @@ namespace lemonade_Stand
     public class Weather
     {
         //member variables
-        public int temperature;
-        public bool precipitation;
+        public int forecastedTemperature;
+        public bool forecastedPrecipitation;
+        public int actualTemperature;
+        public bool actualPrecipitation;
         //constructor
         public Weather()
         {
 
         }
         //member methods
-        public int GenerateTemperature()
+        public int ForecastTemperature()
         {
             Random random = new Random();
-            temperature = random.Next(65, 101);
-            Console.WriteLine("Projected temperatue is: " + temperature + " degrees");
+            forecastedTemperature = random.Next(70, 101);
+            Console.WriteLine("Projected temperatue is: " + forecastedTemperature + " degrees");
             Console.ReadLine();
-            return temperature;
+            return forecastedTemperature;
             //remove the readline at production time
         }
 
-        public bool DeterminePrecipitation()
+        public bool ForecastPrecipitation()
         {
             Random random = new Random();
             int number = random.Next(0, 2);
             if(number == 0)
             {
-                precipitation = true;
+                forecastedPrecipitation = true;
                 Console.WriteLine("There is rain in the forecast for today");
                 Console.ReadLine();
                 //remove the readline at production time
-                return precipitation;
+                return forecastedPrecipitation;
             }
             else
             {
-                precipitation = false;
+                forecastedPrecipitation = false;
                 Console.WriteLine("There is no rain in the forecast for today");
                 Console.ReadLine();
                 //remove the readline at production time
-                return precipitation;
+                return forecastedPrecipitation;
+            }
+        }
+
+        public int GenerateActualTemperature()
+        {
+            Random random = new Random();
+            actualTemperature = random.Next((forecastedTemperature - 5), (forecastedTemperature +5));
+            Console.WriteLine("The actual temperature for today will be " + actualTemperature + " degrees");
+            Console.ReadLine();
+            return actualTemperature;
+        }
+
+        public bool GenerateActualPrecipitation()
+        {
+            Random random = new Random();
+            int number = random.Next(0, 2);
+            if (number == 0)
+            {
+                actualPrecipitation = true;
+                Console.WriteLine("There is rain in the forecast for today");
+                Console.ReadLine();
+                //remove the readline at production time
+                return actualPrecipitation;
+            }
+            else
+            {
+                actualPrecipitation = false;
+                Console.WriteLine("There is no rain in the forecast for today");
+                Console.ReadLine();
+                //remove the readline at production time
+                return actualPrecipitation;
             }
         }
     }

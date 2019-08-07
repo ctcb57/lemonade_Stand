@@ -9,13 +9,12 @@ namespace lemonade_Stand
     public class Game
     {
         //Things to do for the game
-        //need to create a method which tracks the actual daily totals
-        //this means that it just needs to show how much in actual sales you actually made
-        //need to create a method which creates a forecast for the day which will display at the start of the day
-        //need to then create a method which shows the actual weather - should be close to the forecast for playability sake
         //need to have the day class distinguish the difference between profit and loss for the day
+        //need to create an end of the game option
+        //also need to create a method to restart the game if they desire to keep playing
         //need to input some set and get logic for the game to prevent the player from going into the negative
         //need to work on making the math work in a logical way - consider switching all variables to doubles
+        //need to work on ensuring some variables are private and others are public so your security is up
         //clean up the code so it looks and operates much more clean
 
 
@@ -69,7 +68,7 @@ namespace lemonade_Stand
         public void CalcWeeklyProfit()
         {
             weeklyProfit = player1.cashOnHand - player1.startingCash;
-            Console.WriteLine(player1.name + " has earned " + weeklyProfit + " this week.");
+            Console.WriteLine(player1.name + " has earned $" + weeklyProfit + " total this week.");
             Console.ReadLine();
         }
         
@@ -81,8 +80,8 @@ namespace lemonade_Stand
             {
                 Console.WriteLine("Today is day number " + dayNumber + " of " + numberOfDaysThreshold);
                 UserInterface.DisplayWeatherIntroduction();
-                weather.DeterminePrecipitation();
-                weather.GenerateTemperature();
+                weather.ForecastPrecipitation();
+                weather.ForecastTemperature();
                 Console.Clear();
                 UserInterface.DisplayPriceOptions();
                 PurchaseItems();
@@ -90,15 +89,19 @@ namespace lemonade_Stand
                 player1Stand.CreateRecipe();
                 player1Stand.SetLemondadePrice();
                 player1Stand.PourLemonadePitcher(player1Inventory);
+                UserInterface.DisplayActualWeather();
+                weather.GenerateActualPrecipitation();
+                weather.GenerateActualTemperature();
+                UserInterface.StartSalesProcess();
                 for (int i = 0; i < 20; i++)
                 {
-                    player1Stand.DetermineIfCustomerBuys(player1Customer, weather, player1, player1Inventory);
+                    player1Stand.DetermineIfCustomerBuys(player1Customer, weather, player1, player1Inventory, day);
                 }
                 Console.ReadLine();
                 Console.Clear();
                 UserInterface.DisplayEndOfDaySummary();
                 player1Inventory.DisplayItemCount();
-                day.CalcDailyProfit(player1);
+                day.ShowDailySales(player1);
                 CalcWeeklyProfit();
                 Console.Clear();
             }
