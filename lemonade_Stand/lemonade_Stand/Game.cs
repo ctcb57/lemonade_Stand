@@ -11,8 +11,7 @@ namespace lemonade_Stand
         //Things to do for the game
         //need to put the inventory class in either the player or stand class
         //need to put the stand class in the player class
-        //need to create a mechanism which forces the pitcher of lemonade to refill after it is depleted
-        //need to input some set and get logic for the game to prevent the player from going into the negative
+        //need to input some set and get logic for the game to prevent the player from going into the negative - DON'T NEED YET
         //need to create a global random variable
         //Need to ensure that all of of the console.writelines are located within the user interface
         //need to work on making the math work in a logical way - consider switching all variables to doubles
