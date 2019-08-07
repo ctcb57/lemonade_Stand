@@ -8,6 +8,12 @@ namespace lemonade_Stand
 {
     public class Weather
     {
+        // open weather
+        // yahoo weather
+
+        // C# how to make api call
+        // make a separate class
+
         //member variables
         public int forecastedTemperature;
         public bool forecastedPrecipitation;
@@ -55,7 +61,7 @@ namespace lemonade_Stand
         {
             Random random = new Random();
             actualTemperature = random.Next((forecastedTemperature - 5), (forecastedTemperature +5));
-            Console.WriteLine("The actual temperature for today will be " + actualTemperature + " degrees");
+            Console.WriteLine("The temperature will be " + actualTemperature + " degrees today");
             Console.ReadLine();
             return actualTemperature;
         }
@@ -67,7 +73,7 @@ namespace lemonade_Stand
             if (number == 0)
             {
                 actualPrecipitation = true;
-                Console.WriteLine("There is rain in the forecast for today");
+                Console.WriteLine("It will rain today");
                 Console.ReadLine();
                 //remove the readline at production time
                 return actualPrecipitation;
@@ -75,7 +81,7 @@ namespace lemonade_Stand
             else
             {
                 actualPrecipitation = false;
-                Console.WriteLine("There is no rain in the forecast for today");
+                Console.WriteLine("No rain today");
                 Console.ReadLine();
                 //remove the readline at production time
                 return actualPrecipitation;

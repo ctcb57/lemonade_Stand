@@ -9,13 +9,18 @@ namespace lemonade_Stand
     public class Game
     {
         //Things to do for the game
-        //need to have the day class distinguish the difference between profit and loss for the day
-        //need to create an end of the game option
-        //also need to create a method to restart the game if they desire to keep playing
+        //need to work on the starting cash variable to make sure it is actually used
+        //need to put the inventory class in either the player or stand class
+        //need to put the stand class in the player class
+        //need to create a mechanism which forces the pitcher of lemonade to refill after it is depleted
         //need to input some set and get logic for the game to prevent the player from going into the negative
+        //need to create a global random variable
         //need to work on making the math work in a logical way - consider switching all variables to doubles
+        //need to work on user input verification measures to prevent user input errors
         //need to work on ensuring some variables are private and others are public so your security is up
-        //clean up the code so it looks and operates much more clean
+        //need to rewrite the game so it allows for multiplayer or AI
+        //need to figure out how to incorporate the weather API
+
 
 
         //member variables
@@ -24,13 +29,12 @@ namespace lemonade_Stand
         public int dayNumber;
         public const int startingCash = 100;
         public int weeklyProfit;
-        public Inventory player1Inventory;
+        public Inventory player1Inventory; // playerOR stand class
         public Store player1Store;
-        public Day dayOfTheWeek;
-        public Weather weather;
         public Day day;
-        public Stand player1Stand;
+        public Stand player1Stand; // player class
         public Customer player1Customer;
+        public Weather weather;
         //constructor
         public Game()
         {
@@ -44,32 +48,63 @@ namespace lemonade_Stand
             player1.ChooseName();
             player1Store = new Store();
             player1Inventory = new Inventory();
-            weather = new Weather();
             day = new Day();
             player1Stand = new Stand();
             player1Customer = new Customer();
-        }
-
-        public void PurchaseItems()
-        {
-            player1Inventory.DisplayItemCount();
-            player1Store.SellLemons(player1, player1Inventory);
-            player1.DisplayCashOnHand();
-            player1Store.SellCup(player1, player1Inventory);
-            player1.DisplayCashOnHand();
-            player1Store.SellIce(player1, player1Inventory);
-            player1.DisplayCashOnHand();
-            player1Store.SellSugar(player1, player1Inventory);
-            player1.DisplayCashOnHand();
-            player1Inventory.DisplayItemCount();
-            Console.Clear();
+            weather = new Weather();
         }
 
         public void CalcWeeklyProfit()
         {
             weeklyProfit = player1.cashOnHand - player1.startingCash;
-            Console.WriteLine(player1.name + " has earned $" + weeklyProfit + " total this week.");
-            Console.ReadLine();
+            if (weeklyProfit > 0)
+            {
+                Console.WriteLine(player1.name + " has earned $" + weeklyProfit + " total this week.");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine(player1.name + " has lost $" + weeklyProfit + " total this week.");
+                Console.ReadLine();
+            }
+        }
+
+        public void RestartGame()
+        {
+            Console.WriteLine("Would you like to play again?");
+            string response = Console.ReadLine();
+            if (response == "yes")
+            {
+                RunGame();
+            }
+            else
+            {
+                Console.WriteLine("Thanks for playing! Press enter to exit.");
+                Console.ReadLine();
+            }
+        }
+
+        public void EndOfGame(Player player)
+        {
+            if(weeklyProfit > 0)
+            {
+                Console.WriteLine("Game over!");
+                Console.WriteLine("  ");
+                Console.WriteLine(player.name + " has made a profit for the week!");
+                Console.WriteLine(player.name + "'s total profit was $" + weeklyProfit + ".");
+                Console.ReadLine();
+                RestartGame();
+            }
+            else
+            {
+                Console.WriteLine("Game over!");
+                Console.WriteLine("  ");
+                Console.WriteLine(player.name + " did not make a profit for the week.");
+                Console.WriteLine(player.name + "'s total loss was $" + weeklyProfit + ".");
+                Console.WriteLine(player.name + " loses the game!");
+                Console.ReadLine();
+                RestartGame();
+            }
         }
         
         public void RunGame()
@@ -80,21 +115,20 @@ namespace lemonade_Stand
             {
                 Console.WriteLine("Today is day number " + dayNumber + " of " + numberOfDaysThreshold);
                 UserInterface.DisplayWeatherIntroduction();
-                weather.ForecastPrecipitation();
-                weather.ForecastTemperature();
+                day.DisplayDailyWeatherForecast(weather);
                 Console.Clear();
                 UserInterface.DisplayPriceOptions();
-                PurchaseItems();
+                player1Store.PurchaseItems(player1Inventory, player1);
                 UserInterface.DisplayRecipeIntro();
                 player1Stand.CreateRecipe();
                 player1Stand.SetLemondadePrice();
                 player1Stand.PourLemonadePitcher(player1Inventory);
                 UserInterface.DisplayActualWeather();
-                weather.GenerateActualPrecipitation();
-                weather.GenerateActualTemperature();
+                day.DisplayDailyActualWeather(weather);
                 UserInterface.StartSalesProcess();
                 for (int i = 0; i < 20; i++)
                 {
+                    player1Customer = new Customer();
                     player1Stand.DetermineIfCustomerBuys(player1Customer, weather, player1, player1Inventory, day);
                 }
                 Console.ReadLine();
@@ -102,9 +136,12 @@ namespace lemonade_Stand
                 UserInterface.DisplayEndOfDaySummary();
                 player1Inventory.DisplayItemCount();
                 day.ShowDailySales(player1);
+                day.ShowDailyProfit(player1Store, player1);
                 CalcWeeklyProfit();
+                day.ResetDailyData(player1Store);
                 Console.Clear();
             }
+            EndOfGame(player1);
         }
 
     }

@@ -13,7 +13,7 @@ namespace lemonade_Stand
             Console.WriteLine("Welcome to Lemonade Stand!");
             Console.WriteLine("Here are the rules to the game:");
             Console.WriteLine("  ");
-            Console.WriteLine("You will start by purchasing any supplies you believe are necessary given weather conditions.");
+            Console.WriteLine("You will start by purchasing any supplies you believe are necessary given the forecasted weather conditions.");
             Console.WriteLine("After purchasing supplies, you will create your lemonade recipe and set your price.");
             Console.WriteLine("You will start the day which will simulate how much lemonade you sold.");
             Console.WriteLine("You must survive for seven days.");
@@ -21,6 +21,7 @@ namespace lemonade_Stand
             Console.WriteLine("Things to keep in mind:");
             Console.WriteLine("Customer demand will vary depending on the weather and your price.");
             Console.WriteLine("Ensure you have enough supplies to make it through the day.");
+            Console.WriteLine("You will encounter anywhere between 25 and 50 customers each day, so supplies will be crucial");
             Console.WriteLine("If you don't keep a positive cash balance, you will go bankrupt and lose the game");
             Console.WriteLine("   ");
             Console.WriteLine("Press ENTER to begin your game");
@@ -38,7 +39,7 @@ namespace lemonade_Stand
             Console.WriteLine("Sugar: $2 per cup of sugar");
             Console.WriteLine("Ice: $1 per ice pack");
             Console.WriteLine("   ");
-            Console.WriteLine("Please indicate how much of each item you would like to purchase");
+            Console.WriteLine("Please indicate how much of each item you would like to purchase:");
             Console.ReadLine();
             //remove this read line at production time
         }
@@ -53,8 +54,8 @@ namespace lemonade_Stand
 
         public static void DisplayRecipeIntro()
         {
-            Console.WriteLine("Now you need to generate your recipe.");
-            Console.WriteLine("You will decide how many lemons and cups of sugar go into each pitcher");
+            Console.WriteLine("Now you create your lemonade recipe.");
+            Console.WriteLine("You will decide how many lemons, cups of sugar, and ice packs go into each pitcher");
             Console.WriteLine("Each pitcher will generate 10 cups of lemonade");
             Console.ReadLine();
             //remove this readline at production time
@@ -70,16 +71,17 @@ namespace lemonade_Stand
         public static void StartSalesProcess()
         {
             Console.Clear();
+            Console.WriteLine("You're open for business for the day!");
             Console.WriteLine("Your customers are starting to visit the stand");
-            Console.WriteLine("The customers decisions will be listed below");
+            Console.WriteLine("The customers decisions will be listed below:");
             Console.WriteLine("  ");
             Console.ReadLine();
         }
 
         public static void DisplayEndOfDaySummary()
         {
-            Console.WriteLine("That makes the end of the day!");
-            Console.WriteLine("This is what your player's inventory currently sits at");
+            Console.WriteLine("That marks the end of the day!");
+            Console.WriteLine("This is what your player's inventory currently sits at:");
             Console.WriteLine("  ");
             Console.ReadLine();
         }
