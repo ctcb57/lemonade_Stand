@@ -22,31 +22,75 @@ namespace lemonade_Stand
 
         }
         //member methods
-        public void CreateRecipe()
+        public int GetNumberOfLemonsUsedInRecipe(Inventory inventory)
         {
-            Console.WriteLine("How many lemons would you like to use per pitcher?");
-            lemonsPerPitcher = int.Parse(Console.ReadLine());
-            Console.WriteLine("How many cups of sugar would you like to use per pitcher?");
-            sugarPerPitcher = int.Parse(Console.ReadLine());
-            Console.WriteLine("How many ice packs would you like to use per pitcher?");
-            icePerPitcher = int.Parse(Console.ReadLine());
+            inventory.DisplayItemCount();
+            Console.WriteLine("How many lemons would you like to use per pitcher? You must use more than zero and less than you currently have");
+            int lemonsPerPitcher;
+            while (!int.TryParse(Console.ReadLine(), out lemonsPerPitcher) || lemonsPerPitcher > inventory.LemonCount || lemonsPerPitcher <= 0)
+            {
+                Console.WriteLine("That's an invalid response");
+                Console.WriteLine("How many lemons would you like to use per pitcher? You must use more than zero and less than you currently have");
+            }
             Console.Clear();
+            return lemonsPerPitcher;
+
         }
 
+        public int GetAmountOfSugarUsedInRecipe(Inventory inventory)
+        {
+            inventory.DisplayItemCount();
+            Console.WriteLine("How many cups of sugar would you like to use per pitcher? You must use more than zero and less than you currently have");
+            int sugarPerPitcher;
+            while (!int.TryParse(Console.ReadLine(), out sugarPerPitcher) || sugarPerPitcher > inventory.SugarCount || sugarPerPitcher <= 0)
+            {
+                Console.WriteLine("That's an invalid response");
+                Console.WriteLine("How many cups of sugar would you like to use per pitcher? You must use more than zero and less than you currently have");
+            }
+            Console.Clear();
+            return sugarPerPitcher;
+        }
+
+        public int GetAmountOfIceUsedInRecipe(Inventory inventory)
+        {
+            inventory.DisplayItemCount();
+            Console.WriteLine("How many ice packs would you like to use per pitcher? You must use more than zero and less than you currently have");
+            int icePerPitcher;
+            while (!int.TryParse(Console.ReadLine(), out icePerPitcher) || icePerPitcher > inventory.IceCount || icePerPitcher <= 0)
+            {
+                Console.WriteLine("That's an invalid response");
+                Console.WriteLine("How many ice packs would you like to use per pitcher? You must use more than zero and less than you currently have");
+            }
+            Console.Clear();
+            return icePerPitcher;
+        }
+
+        
         public int SetLemondadePrice()
         {
-            Console.WriteLine("How much would you like to charge per cup of lemonade?");
-            priceOfLemonade = int.Parse(Console.ReadLine());
+            Console.WriteLine("How much would you like to charge per cup of lemonade? Set the price between $1 and $10");
+            while(!int.TryParse(Console.ReadLine(), out priceOfLemonade) || priceOfLemonade <= 0 || priceOfLemonade > 10)
+            {
+                Console.WriteLine("That's an invalid response");
+                Console.WriteLine(" ");
+                Console.WriteLine("How much would you like to charge per cup of lemonade?  Set the price between $1 and $10");
+            }
+            Console.Clear();
             return priceOfLemonade;
+        }
+
+        public void GenerateLemonadeRecipeAndPrice()
+        {
+
         }
 
         public void PourLemonadePitcher(Inventory inventory)
         {
-            if (inventory.lemonCount > 0 && inventory.iceCount > 0 && inventory.sugarCount > 0 && inventory.cupCount > 9)
+            if (inventory.LemonCount > 0 && inventory.IceCount > 0 && inventory.SugarCount > 0 && inventory.CupCount > 9)
             {
-                inventory.lemonCount -= lemonsPerPitcher;
-                inventory.iceCount -= icePerPitcher;
-                inventory.sugarCount -= sugarPerPitcher;
+                inventory.LemonCount -= lemonsPerPitcher;
+                inventory.IceCount -= icePerPitcher;
+                inventory.SugarCount -= sugarPerPitcher;
                 cupsOfLemonadeLeftInPitcher = 10;
             }
             else
@@ -64,7 +108,7 @@ namespace lemonade_Stand
             {
                 player.cashOnHand += priceOfLemonade;
                 cupsOfLemonadeLeftInPitcher -= 1;
-                inventory.cupCount -= 1;
+                inventory.CupCount -= 1;
                 day.dailySales += priceOfLemonade;
                 Console.WriteLine("Customer " + customer.idNumber + " purchased lemonade");
                 Console.WriteLine("You now have " + player.cashOnHand + " dollars of cash on hand");

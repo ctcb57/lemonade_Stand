@@ -118,7 +118,15 @@ namespace lemonade_Stand
         {
             for (int i = 0; i < 30; i++)
             {
-                if (player1Inventory.iceCount > 0 && player1Inventory.sugarCount > 0 && player1Inventory.lemonCount > 0 && player1Inventory.cupCount > 0)
+                if(player1Stand.cupsOfLemonadeLeftInPitcher <= 0)
+                {
+                    Console.WriteLine(player1.name + " doesn't have enough supplies to continue making lemonade.");
+                    Console.WriteLine(player1.name + "is unable to sell anymore lemonade.  The day will now end.");
+                    Console.ReadLine();
+                    i = 30;
+                    break;
+                }
+                else if(player1Inventory.IceCount >= 0 && player1Inventory.SugarCount >= 0 && player1Inventory.LemonCount >= 0 && player1Inventory.CupCount >= 0)
                 {
                     player1Customer = new Customer();
                     player1Stand.DetermineIfCustomerBuys(player1Customer, weather, player1, player1Inventory, day);
@@ -130,7 +138,7 @@ namespace lemonade_Stand
                 else
                 {
                     Console.WriteLine(player1.name + " doesn't have enough supplies to continue making lemonade.");
-                    Console.WriteLine(player1.name + "is unable to sell anymore lemonade.  The day will now end.");
+                    Console.WriteLine(player1.name + " is unable to sell anymore lemonade.  The day will now end.");
                     Console.ReadLine();
                     break;
                 }
@@ -150,7 +158,9 @@ namespace lemonade_Stand
                 UserInterface.DisplayPriceOptions();
                 player1Store.PurchaseItems(player1Inventory, player1);
                 UserInterface.DisplayRecipeIntro();
-                player1Stand.CreateRecipe();
+                player1Stand.GetNumberOfLemonsUsedInRecipe(player1Inventory);
+                player1Stand.GetAmountOfIceUsedInRecipe(player1Inventory);
+                player1Stand.GetAmountOfSugarUsedInRecipe(player1Inventory);
                 player1Stand.SetLemondadePrice();
                 player1Stand.PourLemonadePitcher(player1Inventory);
                 UserInterface.DisplayActualWeather();

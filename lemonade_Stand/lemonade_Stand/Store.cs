@@ -37,7 +37,7 @@ namespace lemonade_Stand
                 Console.WriteLine("How many lemons would you like to purchase?");
             }
             player.cashOnHand -= (lemonPrice * response);
-            inventory.lemonCount += (1 * response);
+            inventory.LemonCount += (1 * response);
             int moneySpentOnLemons = lemonPrice * response;
             return moneySpentOnLemons;
         }
@@ -53,7 +53,7 @@ namespace lemonade_Stand
                 Console.WriteLine("How many ice packs would you like to purchase?");
             }
             player.cashOnHand -= (icePrice * response);
-            inventory.iceCount += (1 * response);
+            inventory.IceCount += (1 * response);
             int moneySpentOnIce = icePrice * response;
             return moneySpentOnIce;
         }
@@ -69,7 +69,7 @@ namespace lemonade_Stand
                 Console.WriteLine("How many cups of sugar would you like to purchase?");
             }
             player.cashOnHand -= (sugarPrice * response);
-            inventory.sugarCount += (1 * response);
+            inventory.SugarCount += (1 * response);
             int moneySpentOnSugar = sugarPrice * response;
             return moneySpentOnSugar;
         }
@@ -85,7 +85,7 @@ namespace lemonade_Stand
                 Console.WriteLine("How many cups would you like to purchase?");
             }
             player.cashOnHand -= (cupPrice * response);
-            inventory.cupCount += (1 * response);
+            inventory.CupCount += (1 * response);
             int moneySpentOnCups = cupPrice * response;
             return moneySpentOnCups;
         }
