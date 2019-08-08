@@ -9,13 +9,14 @@ namespace lemonade_Stand
     public class Game
     {
         //Things to do for the game
+        //FIRST THING THURSDAY:
+        //Need to ensure the lemonade recipe input actually results in that amount of items being substracted from counts when lemonade is poured
         //need to put the inventory class in either the player or stand class
         //need to put the stand class in the player class
-        //need to input some set and get logic for the game to prevent the player from going into the negative - DON'T NEED YET
         //need to create a global random variable
         //Need to ensure that all of of the console.writelines are located within the user interface
         //need to work on making the math work in a logical way - consider switching all variables to doubles
-        //need to work on user input verification measures to prevent user input errors
+        //need to work on user input verification measures to prevent user input errors - STILL WORKING
         //need to work on ensuring some variables are private and others are public so your security is up
         //need to rewrite the game so it allows for multiplayer or AI
         //need to figure out how to incorporate the weather API
@@ -71,7 +72,7 @@ namespace lemonade_Stand
 
         public void RestartGame()
         {
-            Console.WriteLine("Would you like to play again?");
+            Console.WriteLine("Would you like to play again? Type yes or no");
             string response = Console.ReadLine();
             if (response == "yes")
             {
@@ -158,10 +159,7 @@ namespace lemonade_Stand
                 UserInterface.DisplayPriceOptions();
                 player1Store.PurchaseItems(player1Inventory, player1);
                 UserInterface.DisplayRecipeIntro();
-                player1Stand.GetNumberOfLemonsUsedInRecipe(player1Inventory);
-                player1Stand.GetAmountOfIceUsedInRecipe(player1Inventory);
-                player1Stand.GetAmountOfSugarUsedInRecipe(player1Inventory);
-                player1Stand.SetLemondadePrice();
+                player1Stand.GenerateLemonadeRecipeAndPrice(player1Inventory);
                 player1Stand.PourLemonadePitcher(player1Inventory);
                 UserInterface.DisplayActualWeather();
                 day.DisplayDailyActualWeather(weather);

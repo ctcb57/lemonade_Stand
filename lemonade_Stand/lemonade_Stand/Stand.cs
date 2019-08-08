@@ -34,7 +34,6 @@ namespace lemonade_Stand
             }
             Console.Clear();
             return lemonsPerPitcher;
-
         }
 
         public int GetAmountOfSugarUsedInRecipe(Inventory inventory)
@@ -66,7 +65,7 @@ namespace lemonade_Stand
         }
 
         
-        public int SetLemondadePrice()
+        public int SetLemonadePrice()
         {
             Console.WriteLine("How much would you like to charge per cup of lemonade? Set the price between $1 and $10");
             while(!int.TryParse(Console.ReadLine(), out priceOfLemonade) || priceOfLemonade <= 0 || priceOfLemonade > 10)
@@ -79,8 +78,12 @@ namespace lemonade_Stand
             return priceOfLemonade;
         }
 
-        public void GenerateLemonadeRecipeAndPrice()
+        public void GenerateLemonadeRecipeAndPrice(Inventory inventory)
         {
+            lemonsPerPitcher = GetNumberOfLemonsUsedInRecipe(inventory);
+            sugarPerPitcher = GetAmountOfSugarUsedInRecipe(inventory);
+            icePerPitcher = GetAmountOfIceUsedInRecipe(inventory);
+            priceOfLemonade = SetLemonadePrice();
 
         }
 
