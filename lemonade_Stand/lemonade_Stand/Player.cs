@@ -10,7 +10,26 @@ namespace lemonade_Stand
     {
         //member variables
         public string name;
-        public int cashOnHand;
+        private int cashOnHand;
+
+        public int CashOnHand
+        {
+            get
+            {
+                return cashOnHand;
+            }
+            set
+            {
+                if (value <= 0)
+                {
+                    cashOnHand = 0;
+                }
+                else
+                {
+                    cashOnHand = value;
+                }
+            }
+        }
 
         //constructor
         public Player()
@@ -18,21 +37,12 @@ namespace lemonade_Stand
             cashOnHand = 100;
         }
         //member methods
-        public string ChooseName()
+        public void ChooseName()
         {
-            Console.WriteLine("Choose your player's name:");
             name = Console.ReadLine().Trim();
             Console.Clear();
-            return name;
         }
 
-        public int DisplayCashOnHand()
-        {
-            Console.WriteLine(name + "'s current cash on hand is: " + cashOnHand);
-            Console.ReadLine();
-            //delete readline at time of game
-            return cashOnHand;
-        }
 
     }
 }

@@ -29,10 +29,7 @@ namespace lemonade_Stand
         {
             Random random = new Random();
             forecastedTemperature = random.Next(70, 101);
-            Console.WriteLine("Projected temperatue is: " + forecastedTemperature + " degrees");
-            Console.ReadLine();
             return forecastedTemperature;
-            //remove the readline at production time
         }
 
         public bool ForecastPrecipitation()
@@ -42,17 +39,11 @@ namespace lemonade_Stand
             if(number == 0)
             {
                 forecastedPrecipitation = true;
-                Console.WriteLine("There is rain in the forecast for today");
-                Console.ReadLine();
-                //remove the readline at production time
                 return forecastedPrecipitation;
             }
             else
             {
                 forecastedPrecipitation = false;
-                Console.WriteLine("There is no rain in the forecast for today");
-                Console.ReadLine();
-                //remove the readline at production time
                 return forecastedPrecipitation;
             }
         }
@@ -61,8 +52,6 @@ namespace lemonade_Stand
         {
             Random random = new Random();
             actualTemperature = random.Next((forecastedTemperature - 5), (forecastedTemperature +5));
-            Console.WriteLine("The temperature will be " + actualTemperature + " degrees today");
-            Console.ReadLine();
             return actualTemperature;
         }
 
@@ -73,17 +62,11 @@ namespace lemonade_Stand
             if (number == 0)
             {
                 actualPrecipitation = true;
-                Console.WriteLine("It will rain today");
-                Console.ReadLine();
-                //remove the readline at production time
                 return actualPrecipitation;
             }
             else
             {
                 actualPrecipitation = false;
-                Console.WriteLine("No rain today");
-                Console.ReadLine();
-                //remove the readline at production time
                 return actualPrecipitation;
             }
         }

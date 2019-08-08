@@ -24,55 +24,44 @@ namespace lemonade_Stand
         //member methods
         public int GetNumberOfLemonsUsedInRecipe(Inventory inventory)
         {
-            inventory.DisplayItemCount();
-            Console.WriteLine("How many lemons would you like to use per pitcher? You must use more than zero and less than you currently have");
+            UserInterface.LemonRecipePrompt();
             int lemonsPerPitcher;
             while (!int.TryParse(Console.ReadLine(), out lemonsPerPitcher) || lemonsPerPitcher > inventory.LemonCount || lemonsPerPitcher <= 0)
             {
-                Console.WriteLine("That's an invalid response");
-                Console.WriteLine("How many lemons would you like to use per pitcher? You must use more than zero and less than you currently have");
+                UserInterface.InvalidLemonRecipeEntry();
             }
-            Console.Clear();
             return lemonsPerPitcher;
         }
 
         public int GetAmountOfSugarUsedInRecipe(Inventory inventory)
         {
-            inventory.DisplayItemCount();
-            Console.WriteLine("How many cups of sugar would you like to use per pitcher? You must use more than zero and less than you currently have");
+            UserInterface.SugarRecipePrompt();
             int sugarPerPitcher;
             while (!int.TryParse(Console.ReadLine(), out sugarPerPitcher) || sugarPerPitcher > inventory.SugarCount || sugarPerPitcher <= 0)
             {
-                Console.WriteLine("That's an invalid response");
-                Console.WriteLine("How many cups of sugar would you like to use per pitcher? You must use more than zero and less than you currently have");
+                UserInterface.InvalidSugarRecipeEntry();
             }
-            Console.Clear();
             return sugarPerPitcher;
         }
 
         public int GetAmountOfIceUsedInRecipe(Inventory inventory)
         {
-            inventory.DisplayItemCount();
-            Console.WriteLine("How many ice packs would you like to use per pitcher? You must use more than zero and less than you currently have");
+            UserInterface.IceRecipePrompt();
             int icePerPitcher;
             while (!int.TryParse(Console.ReadLine(), out icePerPitcher) || icePerPitcher > inventory.IceCount || icePerPitcher <= 0)
             {
-                Console.WriteLine("That's an invalid response");
-                Console.WriteLine("How many ice packs would you like to use per pitcher? You must use more than zero and less than you currently have");
+                UserInterface.InvalidIceRecipeEntry();
             }
-            Console.Clear();
             return icePerPitcher;
         }
 
         
         public int SetLemonadePrice()
         {
-            Console.WriteLine("How much would you like to charge per cup of lemonade? Set the price between $1 and $10");
+            UserInterface.SetLemonadePricePrompt();
             while(!int.TryParse(Console.ReadLine(), out priceOfLemonade) || priceOfLemonade <= 0 || priceOfLemonade > 10)
             {
-                Console.WriteLine("That's an invalid response");
-                Console.WriteLine(" ");
-                Console.WriteLine("How much would you like to charge per cup of lemonade?  Set the price between $1 and $10");
+                UserInterface.InvalidLemonadePriceEntry();
             }
             Console.Clear();
             return priceOfLemonade;
@@ -98,9 +87,7 @@ namespace lemonade_Stand
             }
             else
             {
-                Console.WriteLine("You do not have enough inventory to pour another pitcher of lemonade");
-                Console.WriteLine("You will not be able to sell to another customer today.");
-                Console.ReadLine();
+                UserInterface.InvalidPourLemonadeResponse();
             }
         }
 
@@ -109,20 +96,15 @@ namespace lemonade_Stand
             customer.GenerateCustomerPreferences();
             if (priceOfLemonade < customer.pricePreference && weather.actualTemperature > customer.temperaturePreference)
             {
-                player.cashOnHand += priceOfLemonade;
+                player.CashOnHand += priceOfLemonade;
                 cupsOfLemonadeLeftInPitcher -= 1;
                 inventory.CupCount -= 1;
                 day.dailySales += priceOfLemonade;
-                Console.WriteLine("Customer " + customer.idNumber + " purchased lemonade");
-                Console.WriteLine("You now have " + player.cashOnHand + " dollars of cash on hand");
-                Console.WriteLine("There are " + cupsOfLemonadeLeftInPitcher + " cups of lemonade left in the pitcher");
-                //remove the above line when you are ready for production since it is only checking that the method is working
-                Console.ReadLine();
+                UserInterface.CustomerPurchased(customer, player);
             }
             else
             {
-                Console.WriteLine("Customer " + customer.idNumber + " didn't purchase lemonade");
-                Console.ReadLine();
+                UserInterface.CustomerDidNotPurchase(customer);
             }
         }
     }

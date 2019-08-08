@@ -23,7 +23,6 @@ namespace lemonade_Stand
             }
             set
             {
-                //lemonCount = value < 0 ? 0 : value;
                 if (value <= 0)
                 {
                     lemonCount = 0;
@@ -43,7 +42,6 @@ namespace lemonade_Stand
             }
             set
             {
-                //sugarCount = value < 0 ? 0 : value;
                 if (value <= 0)
                 {
                     sugarCount = 0;
@@ -63,7 +61,6 @@ namespace lemonade_Stand
             }
             set
             {
-                //cupCount = value < 0 ? 0 : value;
                 if (value <= 0)
                 {
                     cupCount = 0;
@@ -83,7 +80,6 @@ namespace lemonade_Stand
             }
             set
             {
-                //iceCount = value < 0 ? 0 : value;
                 if (value <= 0)
                 {
                     iceCount = 0;
@@ -102,15 +98,7 @@ namespace lemonade_Stand
 
         }
         //member variables
-        public void DisplayItemCount()
-        {
-            Console.WriteLine("You currently have " + lemonCount + " lemons.");
-            Console.WriteLine("You currently have " + sugarCount + " cups of sugar.");
-            Console.WriteLine("You currently have " + cupCount + " cups.");
-            Console.WriteLine("You currently have " + iceCount + " packs of ice");
-            Console.ReadLine();
-            //remove this at the time of turning in the project or putting everything together
-        }
+
 
     }
 }

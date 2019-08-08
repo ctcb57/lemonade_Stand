@@ -11,6 +11,7 @@ namespace lemonade_Stand
         //member variables
         public int dailyProfit;
         public int dailySales;
+        public int totalPurchase;
 
         //constructor
         public Day()
@@ -18,43 +19,16 @@ namespace lemonade_Stand
             dailySales = 0;
         }
         //member methods
-        public void DisplayDailyWeatherForecast(Weather weather)
+
+        public int ShowDailyProfit()
         {
-            weather.ForecastTemperature();
-            weather.ForecastPrecipitation();
-            Console.Clear();
+            dailyProfit = dailySales - totalPurchase;
+            return dailyProfit;
         }
 
-        public void DisplayDailyActualWeather(Weather weather)
+        public void ResetDailyData()
         {
-            weather.GenerateActualTemperature();
-            weather.GenerateActualPrecipitation();
-        }
-
-        public void ShowDailySales(Player player)
-        {
-            Console.WriteLine(player.name + " earned $" + dailySales + " in sales today.");
-            Console.ReadLine();
-        }
-
-        public void ShowDailyProfit(Store store, Player player)
-        {
-            dailyProfit = dailySales - store.totalPurchase;
-            if (dailyProfit > 0)
-            {
-                Console.WriteLine(player.name + " had a total profit of $" + dailyProfit + " today.");
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine(player.name + " had a total loss of $" + dailyProfit + " today.");
-                Console.ReadLine();
-            }
-        }
-
-        public void ResetDailyData(Store store)
-        {
-            store.totalPurchase = 0;
+            totalPurchase = 0;
             dailySales = 0;
         }
 
