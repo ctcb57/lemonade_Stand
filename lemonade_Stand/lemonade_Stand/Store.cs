@@ -13,7 +13,7 @@ namespace lemonade_Stand
         public int icePrice;
         public int cupPrice;
         public int sugarPrice;
-        //public int totalPurchase;
+
 
         //constructor
         public Store()

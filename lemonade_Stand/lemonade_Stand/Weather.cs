@@ -8,11 +8,6 @@ namespace lemonade_Stand
 {
     public class Weather
     {
-        // open weather
-        // yahoo weather
-
-        // C# how to make api call
-        // make a separate class
 
         //member variables
         public int forecastedTemperature;

@@ -189,7 +189,6 @@ namespace lemonade_Stand
             Console.WriteLine("You will decide how many lemons, cups of sugar, and ice packs go into each pitcher");
             Console.WriteLine("Each pitcher will generate 10 cups of lemonade");
             Console.ReadLine();
-            //remove this readline at production time
         }
 
         public static void LemonRecipePrompt()

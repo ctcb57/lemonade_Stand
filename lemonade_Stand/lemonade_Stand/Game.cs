@@ -8,11 +8,7 @@ namespace lemonade_Stand
 {
     public class Game
     {
-        //Things to do for the game
-        //need to create a global random variable
-        //need to work on ensuring some variables are private and others are public so your security is up - PARTIALLY COMPLETE, CHECK WITH INSTRUCTOR
-        //need to rewrite the game so it allows for multiplayer or AI
-        //need to figure out how to incorporate the weather API
+
 
         //member variables
         public Player player1;
