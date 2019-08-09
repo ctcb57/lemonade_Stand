@@ -29,6 +29,16 @@ namespace lemonade_Stand
             Console.Clear();
         }
 
+        public static void AskNumberOfPlayersPrompt()
+        {
+            Console.WriteLine("How many players would you like? Please select 1 or 2.");
+        }
+
+        public static void InvalidResponse()
+        {
+            Console.WriteLine("That's an invalid response.");
+        }
+
         public static void DisplayPriceOptions()
         {
             Console.WriteLine("Welcome to the Store!");
@@ -43,9 +53,41 @@ namespace lemonade_Stand
             Console.WriteLine("   ");
         }
 
-        public static void DisplayNameChoice(Player player)
+        public static void DisplayOnePlayerNameChoice(Player player)
         {
             Console.WriteLine("Choose your player's name:");
+            player.ChooseName();
+        }
+
+        public static void DisplayFirstPlayerNameChoice(Player player)
+        {
+            Console.WriteLine("Player 1, choose your name:");
+            player.ChooseName();
+        }
+
+        public static void MultiplayerIntro(Player player)
+        {
+            Console.WriteLine(player.name + " will go first.");
+            Console.WriteLine("Each player start by taking turns seeing their weather forecast, purchasing items, and setting recipes and prices");
+            Console.WriteLine("Next, each player will simulate their day");
+            Console.WriteLine("At the conclusion of each day, it will display how each player is doing");
+            Console.WriteLine("At the end of the game, the player who earned the largest profit margin will win");
+            Console.WriteLine("Press enter to begin the game");
+            Console.ReadLine();
+            Console.Clear();
+        }
+
+        public static void PlayerTurnStart(Player player)
+        {
+            Console.WriteLine("It is " + player.name + "'s turn.");
+            Console.WriteLine("Press ENTER to continue.");
+            Console.ReadLine();
+            Console.Clear();
+        }
+
+        public static void DisplaySecondPlayerNameChoice(Player player)
+        {
+            Console.WriteLine("Player 2, choose your name:");
             player.ChooseName();
         }
         public static void DisplayDayNumber(int dayNumber, int numberOfDaysThreshold)
@@ -284,18 +326,43 @@ namespace lemonade_Stand
             Console.ReadLine();
         }
 
-        public static void WeeklyProfitPrompt(Player player, int weeklyProfit)
+        public static void WeeklyProfitPrompt(Player player, int startingCash)
         {
-            if (weeklyProfit > 0)
+            if (player.CalculateWeeklyProfit(startingCash) > 0)
             {
-                Console.WriteLine(player.name + " has earned $" + weeklyProfit + " total this week.");
+                Console.WriteLine(player.name + " has profited $" + player.weeklyProfit + " total this week.");
                 Console.ReadLine();
             }
             else
             {
-                Console.WriteLine(player.name + " has lost $" + weeklyProfit + " total this week.");
+                Console.WriteLine(player.name + " has a profit loss of $" + player.weeklyProfit + " total this week.");
                 Console.ReadLine();
             }
+            Console.Clear();
+        }
+
+        public static void MultiplayerEndOfDayIntro(int dayNumber)
+        {
+            Console.WriteLine("That marks the end of day " + dayNumber + ".");
+            Console.WriteLine(" ");
+        }
+
+        public static void MultiplayerEndOfDayPlayerWinning(Player player, int player2Profit)
+        {
+            Console.WriteLine(player.name + " is currently winning");
+            Console.WriteLine(player.name + " has a profit lead of $" + (player.weeklyProfit - player2Profit) + ".");
+            Console.WriteLine("Press ENTER to continue.");
+            Console.ReadLine();
+            Console.Clear();
+        }
+
+        public static void MultiplayerEndOfDayTie(Player player)
+        {
+            Console.WriteLine("The game is currently tied");
+            Console.WriteLine("Both players have earned $" + player.weeklyProfit);
+            Console.WriteLine("Press ENTER to continue.");
+            Console.ReadLine();
+            Console.Clear();
         }
 
         public static void PlayerWentBankrupt()
@@ -322,6 +389,25 @@ namespace lemonade_Stand
             Console.WriteLine(player.name + " loses the game!");
             Console.ReadLine();
         }
+
+        public static void MultiplayerGameWinnerPrompt(Player player, int weeklyProfit1, int weeklyProfit2)
+        {
+            Console.WriteLine(player.name + " has won!");
+            Console.WriteLine("They won by a margin of $" + (weeklyProfit1 - weeklyProfit2) + ".");
+            Console.WriteLine("Press ENTER to continue.");
+            Console.ReadLine();
+            Console.Clear();
+        }
+
+        public static void MultiplayerTieGamePrompt()
+        {
+            Console.WriteLine("The game has resulted in a tie!");
+            Console.WriteLine("Press ENTER to continue.");
+            Console.ReadLine();
+            Console.Clear();
+        }
+
+
 
         public static void PlayAgainPrompt()
         {

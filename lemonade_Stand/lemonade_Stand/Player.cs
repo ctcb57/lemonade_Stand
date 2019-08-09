@@ -10,6 +10,7 @@ namespace lemonade_Stand
     {
         //member variables
         public string name;
+        public int weeklyProfit;
         private int cashOnHand;
 
         public int CashOnHand
@@ -41,6 +42,12 @@ namespace lemonade_Stand
         {
             name = Console.ReadLine().Trim();
             Console.Clear();
+        }
+
+        public int CalculateWeeklyProfit(int startingCash)
+        {
+            weeklyProfit = cashOnHand - startingCash;
+            return weeklyProfit;
         }
 
 
